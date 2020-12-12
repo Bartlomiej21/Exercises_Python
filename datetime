@@ -1,0 +1,11 @@
+'''
+program do podania daty i zamienienia obiektu now na stringa określającego czas
+'''
+
+
+import datetime
+
+
+teraz = datetime.datetime.now()
+print(teraz.strftime("%Y-%m-%d   %H:%M:%S"))
+
