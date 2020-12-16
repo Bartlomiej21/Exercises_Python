@@ -1,0 +1,132 @@
+'''
+Celem programu jest zamiana tygodni na daty. 
+Ma to wymiar praktyczny przy zastosowaniu danych statystycznych, którymi się posługuje, ale głównym celem jest przećwiczenie
+programowania w Pythonie. 
+
+Przykład: 2020 31 - program ma określić datę przypadającą na 31 tydzień 2020 roku
+Nie będę używał datetime ani calendar 
+
+styczeń 2000 - sobota
+styczeń 2020 - środa
+'''
+
+
+
+# deklaruje zmienne pomocne w zadaniu: liczba dni w kolejnych miesiącach, nazwy dni tygodnia i miesięcy
+months_days = [31,28,31,30,31,30,31,31,30,31,30,31]
+months_names = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień']
+days_of_week = ["Nd","Pon", "Wt", "Śr", "Czw", "Pt", "Sob"]
+
+
+
+
+
+
+
+
+# poniższa funkcja ma pobrać input od użytkownika. Można też wpisać wartości 
+
+def input_1():
+    try:
+        global year,week
+        year,week = 2019,3  # usprawniam testowanie programu omijając na razie input
+        assert year>=2000
+        #year = int(input("Podaj rok: "))
+        #week = int(input("Podaj tydzień: "))
+    except AssertionError:
+        print("Rok nie może być mniejszy niż 2000")
+    except:
+        print("Proszę podać numer.")
+        input_1()
+
+input_1()
+
+
+# poniższa funkcja liczy dni od 1 stycznia do podanego tygodnia i roku
+
+def days_total(year,week):
+    
+    
+    global days_total
+    days_total = 0
+    current_year = 2000
+    
+    for i in range(2000,year):
+        if current_year%4==0 and ( ((week-1)*7+1)>=60 or current_year!=year):
+            days_total+=1
+        if current_year==year:
+            days_total+=((week-1)*7+1)
+            print(days_total)
+            return days_total
+        
+        days_total+=365
+        #print(days_total)
+        current_year+=1
+    
+    
+
+    
+days_total(year,week)
+    
+
+
+    
+    
+    
+def day_of_week(days_total):
+    weekday = 6   # 1 stycznia 2000 roku to sobota (7 element listy dni tygodnia, czyli 6)
+    month_name = 0
+    first_year = 2000
+    
+    #days = 1
+    day_month = 1
+    day_year = 1
+    przestępny = True
+    
+    x=1   # zmienna pomocnicza do liczenia dni 
+    y=0   # zmienna pomocnicza do wyznaczania danego miesiąca 
+    
+    
+    # poniższa pętla dodaje kolejne dni licząc od 1 stycznia 2000. Odmierza dni tygodnia, nazwy miesięcy i lata
+    while x!= days_total:
+        weekday+=1
+        if weekday==7:
+            weekday=0
+            
+        
+        
+        day_month+=1
+        if day_month>months_days[month_name] and przestępny==True:
+            przestępny = False
+            pass
+        if day_month>months_days[month_name] and przestępny==False:
+            day_month=1
+            month_name+=1
+            if month_name>11:
+                month_name=0
+        
+            
+            
+        day_year+=1
+        if day_year>365 and przestępny==False:
+            day_year=1
+            first_year+=1
+        if day_year>366:
+            przestępny==False
+            day_year=1
+            first_year+=1
+                
+        print(day_month,days_of_week[weekday],months_names[month_name],first_year)     # do testów pętli(po kolei wypisuje kolejne dni)
+        x+=1
+            
+                
+    print(days_of_week[weekday],months_names[month_name],year)
+        
+
+    
+    
+day_of_week(days_total)   
+    
+
+
+# UWAGA! Program jeszcze niegotowy. Zawiera bugi
