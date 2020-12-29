@@ -1,0 +1,14 @@
+'''
+algorytm do sortowania. Zacznę od liczb, a potem mogę się wziąć za litery
+
+Program ma przyjąć przypadkową sekwencję liczb i ułożyć je w kolejności
+
+
+ćwiczenie pomoże mi też zapamiętać nazwy i sposoby działania kolejnych algorytmów
+
+'''
+
+
+list1 = [12,45,35,5,3,23,8,9]
+
+def sortowanko1(lista):
