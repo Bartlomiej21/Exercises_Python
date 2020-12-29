@@ -5,10 +5,30 @@ Program ma przyjąć przypadkową sekwencję liczb i ułożyć je w kolejności
 
 
 ćwiczenie pomoże mi też zapamiętać nazwy i sposoby działania kolejnych algorytmów
+1. Selection Sort:
+najmniejsza liczba na początek, a potem zamiast [0..n] jest [1..n]
 
 '''
 
 
-list1 = [12,45,35,5,3,23,8,9]
+list1 = [12,45,35,5,3,23,8,12]
+list2 = [4,2]
+
+print(n)
 
 def sortowanko1(lista):
+    # zmienne pomocnicze
+    n = len(lista)
+    l = 1   # zaczynamy od 1, bo element pierwszy jest z góry uznany za najmniejszy
+    min = lista[0]
+    while l < n:
+        if lista[l]<min:
+            min = lista[l]    #proste sortowanie - jeżeli następny element jest mniejszy, zastępuje obecny
+            l+=1
+        else:
+            l+=1
+        # print(min)
+
+    print("Najmniejsza liczba z danego przedziału to "+str(min)+".")
+
+sortowanko1(list2)
