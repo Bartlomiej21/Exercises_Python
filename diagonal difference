@@ -34,8 +34,10 @@ Return the absolute difference between the sums of the matrix's two diagonals as
 Sample Input
 
 3
-11 2 4
-4 5 6
+
+
+11 2  4
+4  5  6
 10 8 -12
 Sample Output
 
@@ -44,13 +46,55 @@ Sample Output
 
 
 1. upewnić się, że dane sa we właściwymy zakresie
-2. stworzyć zmienną zawierającą array. nie jestem pewien, ale to chyba będą 3 zmienne, kazda reprezentująca inny wiersz?
+2. stworzyć zmienną zawierającą array. Będzie to złożona lista - [[].[]] w takiej formie
 3 dodajemy pierwsza przekątną. funkcja może być większa niż 3 na 3, dlatego trzeba to uwzględnić w formule
 4. dodajemy drugą przekątną. Pamiętać o tym, ze jest to różnica absolutna.
 5. podać wynik. 
 
 """
 
-arr1= [1, 2, 3]
-arr2= [4, 5, 6]
-arr3= [7, 8, 9]
+
+arr = [[11,2,4],[4,5,6],[10,8,-12]]   # bazowa macierz, powinna mieć taką samą liczbę kolumn i wierszy
+
+
+
+def diagonalDifference(arr):
+    n = len(arr)  # liczba wierszy i kolumn. 3 w mojej wersji
+    k = 0      # zmienna do zwiększania pętli
+    l = n      # zmienna do zmniejszania w pętli (2 przekątna)
+    suma1 = 0  # suma 1 przekątnej
+    suma2 = 0  # suma 2 przekątnej
+    
+   # upewniamy się, że wprowadzone dane są dobre (-100>=arr[i][j]<=100) i liczba kolumn i wierszy się zgadzają 
+    
+    try:  
+        assert len(arr)==n
+        for i in arr:
+            assert len(i)==n
+            for j in i:
+                assert j<=100 and j>=-100  
+        
+    except AssertionError:
+        print("Źle wprowadzone dane.")
+    except:
+        print("Coś poszło nie tak zamykamy program")
+        
+    for i in arr:     # po kolei dodajemy nasze sumy po każdym wierszu
+        suma1 += i[k]
+        suma2 += i[l-1]
+        k+=1
+        l-=1
+        #print(suma1)     # do testów
+        #print(suma2)
+    
+    #print(suma1)     # do testów
+    #print(suma2)
+    
+    return abs(suma1-suma2)  
+    # funkcja zwraca wartość bezwzględną policzonych różnic przekątnych macierzy
+    
+    
+            
+
+                
+diagonalDifference(arr)
