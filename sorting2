@@ -1,0 +1,8 @@
+"""
+to będzie mój drugi algorytm sortowania.
+tym razem użyję algorytmu bubble sort
+polega on na tym, że ostatnią liczbę porównuje z WSZYSTKIMI wcześniejszymi
+
+np [2,3,5,4,8,1] 4 zostanie porównana z 5 i 3, ale takie 1 będzie już przesunięte na sam przód listy
+nie ma potrzeby sprawdzania następnego elementu, jeżeli poprzedni już jest mniejszy
+"""
