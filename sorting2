@@ -6,3 +6,65 @@ polega on na tym, że ostatnią liczbę porównuje z WSZYSTKIMI wcześniejszymi
 np [2,3,5,4,8,1] 4 zostanie porównana z 5 i 3, ale takie 1 będzie już przesunięte na sam przód listy
 nie ma potrzeby sprawdzania następnego elementu, jeżeli poprzedni już jest mniejszy
 """
+
+def sortowanko2(lista):
+    nowaLista = lista.copy()
+    
+    print(lista)
+    
+    index = 1
+    
+    
+    while index<len(lista):
+        n=index
+        cel=index
+        numer = nowaLista.pop(index)
+
+        print(nowaLista)
+        
+        while n>0:
+            
+          
+            if numer<nowaLista[n-1]:        # nie jestem pewien czy nie powinno być n
+                cel-=1
+                print(cel)
+            
+            else:
+                break
+                
+                
+            n-=1
+            print(n)
+          
+        
+        nowaLista.insert(cel,numer) 
+        # vowel.insert(3, 'o')
+        print(nowaLista)
+        index+=1
+        
+                
+            
+        
+                
+                
+            
+    print(nowaLista)
+        
+        
+        #nowaLista[l]=min
+    
+    print("Oto wynik: ",lista,nowaLista)
+                
+      
+            
+lista = [2,4,15,7,6,8]   
+
+sortowanko2(lista)
+
+
+"""
+funkcja działa
+nie robiłem już asserta dla sytuacji, kiedy lista ma np. długość 0
+
+myślałem, że ten algorytm będzie prostszy (na 15 min), ale zajęło mi to 2 godziny
+"""
