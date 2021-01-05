@@ -38,7 +38,7 @@ def sortowanko2(lista):
           
         
         nowaLista.insert(cel,numer) 
-        # vowel.insert(3, 'o')
+        
         print(nowaLista)
         index+=1
         
@@ -48,10 +48,10 @@ def sortowanko2(lista):
                 
                 
             
-    print(nowaLista)
+    #print(nowaLista)
         
         
-        #nowaLista[l]=min
+        
     
     print("Oto wynik: ",lista,nowaLista)
                 
