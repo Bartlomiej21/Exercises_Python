@@ -25,7 +25,7 @@ def sortowanko2(lista):
         while n>0:
             
           
-            if numer<nowaLista[n-1]:        # nie jestem pewien czy nie powinno być n
+            if numer<nowaLista[n-1]:        
                 cel-=1
                 print(cel)
             
