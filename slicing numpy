@@ -1,0 +1,15 @@
+"""
+
+ćwiczenie z kursu polegające na skopiowaniu arrayu i zamienieniu jego części.
+Warto pamiętać, żeby kopiować arraye
+
+"""
+
+
+import numpy as np
+
+np_arr = np.ones((7, 6))
+np_slice = np.zeros((2,2))
+
+np_copy = np.copy(np_arr)
+np_copy[2:4,3:5]=np_slice
