@@ -1,10 +1,12 @@
 # proste użycie funkcji map()
 # celem jest stworzenie listy mapped_list liczącej liczbę "n" w danym elemencie input_list
+# dodatkowo stworze sobie drugą listę, która będzie dodawała cokolwiek po każdym elemencie pierwszej listy
 
 input_list = ['What we think, we become.', 'Every moment is a fresh beginning.', 'Change the world by being yourself.',
              'Hate comes from intimidation, love comes from appreciation', 'If I’m gonna tell a real story, I’m gonna start with my name.', 'Oh, the things you can find, if you don’t stay behind.']
              
 
 mapped_list = list(map(lambda x: x.count("n"),input_list))
+mapped_list2 = map(lambda x: x+" - a known saying.",input_list)
 print(mapped_list)
 
