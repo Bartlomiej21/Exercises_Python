@@ -1,0 +1,38 @@
+# proste ćwiczenia w używaniu pandas
+
+import pandas as pd 
+import numpy as np
+
+np_arr = np.array([1,2,3,7])
+series_np = pd.Series(np_arr)
+print(series_np)
+
+dict = {"Imię":"Bartek",
+        "Zawód":"Grabarz zmysłów",
+        "Wiek":300}
+
+
+
+moja_pierwsza_seria_w_pandzie = pd.Series(dict)
+print(moja_pierwsza_seria_w_pandzie)
+
+mp = moja_pierwsza_seria_w_pandzie
+
+panda_to_np = mp.to_numpy()
+print(panda_to_np)
+print(mp.get(2)) # powinno 2 index wydrukkować
+# działa na series, nie działa na np
+
+mp.index = [1,2,3]
+print(mp)
+
+# print(dict[0])   # nie można tak (KeyError)
+
+print(mp[[1]])  # podwójne nawiasy = cały wiersz, pojedyncz=value
+print(mp.iloc[ 0:2 ])
+print(mp.loc[1:3])
+
+# DROP command - usuwa wiersz
+
+mp = mp.drop(labels=2)  # jest jeszcze metoda inplace b 
+print(mp)
