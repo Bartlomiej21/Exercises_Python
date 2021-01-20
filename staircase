@@ -1,0 +1,35 @@
+""" 
+Program przyjmuje input w formie integera i wyrzuca output w formie printa:
+i-1 spacji + i*#
+np. dla 3 jest to 
+  #
+ ##
+###
+
+"""
+
+def staircase(n: int):
+    output=""
+    #print(type(n))
+    try:
+        assert n>0 and type(n)==int   # niepotrzebne, bo i tak funkcja by nie zadziałała przy złym typie danych
+    except TypeError:
+        print("Zły typ danych. Proszę wprowadzić liczbę całkowitą.")
+    except:
+        print("Number must be higher than 0.")
+    
+    
+    
+        
+    for i in range(1,n+1):   # iterujemy po każdej linijce
+        if i>1:
+            output+='\n'     # trzeba dodać, żeby zrobiło nową linię. Po ostatniej linijce oczywiście nie trzeba
+        
+        output+=' '*(n-i)+"#"*i    # print każdej pojedynczej linijki
+       
+    
+    print(output)
+    
+
+staircase(6)
+        
