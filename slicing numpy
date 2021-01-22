@@ -11,5 +11,11 @@ import numpy as np
 np_arr = np.ones((7, 6))
 np_slice = np.zeros((2,2))
 
+np_arr2=np.zeros((2,2))
+np_new= np.arr((2,2))
+
 np_copy = np.copy(np_arr)
 np_copy[2:4,3:5]=np_slice
+
+np_copy2 = np.copy(np_arr2)
+np_copy2[0:2;0:2]=np_new
