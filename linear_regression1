@@ -1,0 +1,24 @@
+# ćwiczenie polegające na ustaleniu przewidywanego dochodu przy użyciu regresji liniowej
+
+
+import pandas as pd
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('C:\\Users\#####\Desktop\Python exercises\ML\py-master\ML\\1_linear_reg\Exercise\canada_per_capita_income.csv')   # poprawić, jezeli będę kiedyś jeszcze używał
+
+#print(df)
+#print(df["per capita income (US$)"])
+
+reg2 = linear_model.LinearRegression()
+reg2.fit(df[['year']],df["per capita income (US$)"])
+
+%matplotlib inline
+plt.xlabel('Year')
+plt.ylabel('Income (US$)')
+plt.scatter(df.year,df["per capita income (US$)"],marker='+')
+plt.plot(df.year,df["per capita income (US$)"])
+
+wynik = reg2.predict([[2020]])
+print(wynik)
