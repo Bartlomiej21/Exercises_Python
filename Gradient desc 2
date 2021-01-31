@@ -1,0 +1,81 @@
+import numpy as np
+import pandas as pd
+from sklearn import linear_model
+import math
+
+df = pd.read_csv("C:\\Users\#######\Desktop\Python exercises\ML\py-master\ML\\3_gradient_descent\Exercise\\test_scores.csv")
+
+x = np.array(df.math)
+y = np.array(df.cs)
+#print(df)
+#print(x)
+#print(y)
+
+'''
+     name  math  cs
+0   david    92  98
+1   laura    56  68
+2  sanjay    88  81
+3     wei    70  80
+4    jeff    80  83
+5   aamir    49  52
+6  venkat    65  66
+7   virat    35  30
+8  arthur    66  68
+9    paul    67  73
+x - [92 56 88 70 80 49 65 35 66 67]
+y - [98 68 81 80 83 52 66 30 68 73]
+'''
+
+#print(math.isclose(1,1.02,rel_tol=0.08))  # prints True
+
+def regression_coef():
+    reg = linear_model.LinearRegression()
+    reg.fit(df[['math']],df.cs)
+    print("Reg score: "+ str(reg.score(df[['math']],df.cs)))
+    return reg.coef_,reg.intercept_
+
+
+    
+
+def gradient_descent(x,y):
+    learning_rate = 0.0002    #BARDZO WAŻNE - zła wartość prowadzi np. do zwiększenia kosztu
+    iterations = 1000
+    m_curr = b_curr = 0
+    n=len(x)
+    prev_cost = 0
+    for i in range(iterations):
+        y_predicted = m_curr*x + b_curr
+        mse = (1/n)*sum([val**2 for val in (y-y_predicted)])
+        #print("Różnica kosztu: {}".format(mse-prev_cost))
+        #print(math.isclose(mse,prev_cost,rel_tol=1e-5))
+        dm = -(2/n)*sum(x*(y-y_predicted))
+        db = -(2/n)*sum(y-y_predicted)
+        m_curr = m_curr - learning_rate * dm
+        b_curr = b_curr - learning_rate * db
+        if math.isclose(mse,prev_cost,rel_tol=1e-5):  # w oryginale 1e-20, ale to zbyt czasochłonne
+            #print("Różnica kosztu: {}".format(mse-prev_cost))
+            #print("Ostatnia iteracja ma numer {}".format(i))
+            break
+        prev_cost = mse
+    
+    return m_curr,b_curr
+    
+    
+        
+if __name__=="__main__":     # nowa konstrukcja, to chyba taki sposób na auto wywołanie za każdym razem
+    x = np.array(df.math)
+    y = np.array(df.cs)
+    
+    m, b = gradient_descent(x,y)
+    print("Gradient descent function: coef {},  intercept {}".format(m,b))
+    
+    m2,b2=regression_coef()
+    print('Regression sklearn: coef {}, intercept {}'.format(m2,b2))
+        
+        
+gradient_descent(x,y)
+
+
+
+# jakoś poszło... dużo pracy i drobnych poprawek, bez wzoru byłoby to niemożliwe
