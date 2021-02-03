@@ -1,0 +1,26 @@
+def add_vectors(v,w):
+    return [v_i+w_i for v_i,w_i in zip(v,w)]
+   
+def sub_vectors(v,w):
+    return [v_i-w_i for v_i,w_i in zip(v,w) ]
+
+arr1 = [1,2,3]
+arr2 = [i+1 for i in arr1]  #[2,3,4]
+
+wynik = add_vectors(arr1,arr2) 
+wynik2 = sub_vectors(arr1,arr2)
+#print(wynik,wynik2)
+
+# column = len(A[0])
+
+A=[[2,4],
+[5,8]]
+print(A)
+
+def get_column(A,j):
+    column = []
+    for i in range(0,len(A)):
+        column.append(A[i][j])
+    return column
+
+print(get_column(A,0))
