@@ -1,0 +1,117 @@
+# ćwiczenia z Pythona
+
+class Car:
+    def __init__(self,model,age,price,color):
+        self.model = model 
+        self.age = age
+        self.price = price
+        self.__color = color
+
+    def info():
+        return "Klasa o nazwie Car"
+    
+    def setcolor(self,color):
+        self.__color = color 
+    
+    def getcolor(self):
+        return self.__color
+
+    def delcolor(self):
+        del self.__color
+   
+    color = property(getcolor,setcolor,delcolor,"What am I doing??")
+    
+'''
+
+car1 = Car("Audi",20,20000,'red')
+print(car1.getcolor())
+car1.setcolor('blue')
+print(car1.getcolor())
+car1.delcolor()
+# w tym momencie print car1 wyrzuci błąd - nie ma wartości kolor
+car1.setcolor("green")
+print(car1.color)
+
+'''
+
+# ponizej przykład ze strony
+
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    def get_name(self):
+        print('Getting name')
+        return self._name
+
+    def set_name(self, value):
+        print('Setting name to ' + value)
+        self._name = value
+
+    def del_name(self):
+        print('Deleting name')
+        del self._name
+
+    # Set property to use get_name, set_name
+    # and del_name methods
+    name = property(get_name, set_name, del_name, 'Name property')
+
+#p = Person('Adam')
+#print(p.name)
+#p.name = 'John'
+#del p.name
+
+
+class Animal:
+    def __init__(self,name,race,age):
+        self.__name = name
+        self.race = race
+        self.age = age
+
+    def get_name():
+        return self.__name
+    
+    def set_name(name):
+        self.__name = name
+
+    def del_name():
+        del self.__name
+
+    name = property(get_name,set_name,del_name)
+
+'''
+
+### DECORATOR FUNCTION
+
+def decorator_fun(inner_fun):  # inner_fun to DEKLARACJA
+    def wrapper_fun():
+        print("This will be printed first")
+        inner_fun()
+        print("This will be printed last")
+    return wrapper_fun   # zwracamy miejsce w pamięci, to NIE JEST wywołanie funkcji
+
+def magic_print():
+    print("This is almost magical")
+
+x = decorator_fun(magic_print)   #uwaga na nawiasy!!!!!
+print(x)
+print(x())
+
+'''
+
+
+def dec(inner_fun):
+    def wrapper_fun():
+        print("This is a wrapper")
+        inner_fun()
+    
+    return wrapper_fun
+
+@dec
+def modified_print():
+    print("A modified function")
+
+
+y = modified_print()  #  samo zapisanie zmiennej powołuje wywołanie funkcji
+z =dec(modified_print)
+print(y)   # wyrzuci None albo miejsce w pamięci. Nie spowoduje wywołania funkcji
