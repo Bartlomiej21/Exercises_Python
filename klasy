@@ -1,0 +1,201 @@
+# moje ćwiczenie z klasami
+
+class Car:
+    def __init__(self,model,age,price,color):
+        self.model = model 
+        self.age = age
+        self.price = price
+        self.__color = color
+
+    def info():
+        return "Klasa o nazwie Car"
+    
+    def setcolor(self,color):
+        self.__color = color 
+    
+    def getcolor(self):
+        return self.__color
+
+    def delcolor(self):
+        del self.__color
+   
+    color = property(getcolor,setcolor,delcolor,"What am I doing??")   # not Pythonic
+    
+
+
+car1 = Car("Audi",20,20000,'red')
+print(car1.getcolor())
+car1.setcolor('blue')
+print(car1.getcolor())
+car1.delcolor()
+# w tym momencie print car1 wyrzuci błąd - nie ma wartości kolor
+car1.setcolor("green")
+print(car1.color)
+
+
+
+# ponizej przykład ze strony
+
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    def get_name(self):
+        print('Getting name')
+        return self._name
+
+    def set_name(self, value):
+        print('Setting name to ' + value)
+        self._name = value
+
+    def del_name(self):
+        print('Deleting name')
+        del self._name
+
+    # Set property to use get_name, set_name
+    # and del_name methods
+    name = property(get_name, set_name, del_name, 'Name property')
+
+#p = Person('Adam')
+#print(p.name)
+#p.name = 'John'
+#del p.name
+
+
+class Animal:
+    def __init__(self,name,race,age):
+        self.__name = name
+        self.race = race
+        self.age = age
+
+    def get_name():
+        return self.__name
+    
+    def set_name(name):
+        self.__name = name
+
+    def del_name():
+        del self.__name
+
+    name = property(get_name,set_name,del_name)
+
+
+### DECORATOR FUNCTION
+
+def decorator_fun(inner_fun):  # inner_fun to DEKLARACJA
+    def wrapper_fun():
+        print("This will be printed first")
+        inner_fun()
+        print("This will be printed last")
+    return wrapper_fun   # zwracamy miejsce w pamięci, to NIE JEST wywołanie funkcji
+
+def magic_print():
+    print("This is almost magical")
+
+x = decorator_fun(magic_print)   #uwaga na nawiasy!!!!!
+print(x)    # to jest obiekt
+print(x())  # to spowoduje wykonanie intrukcji wewnątrz funkcji
+
+
+
+
+def dec(inner_fun):
+    def wrapper_fun():
+        print("This is a wrapper")
+        inner_fun()
+    
+    return wrapper_fun
+
+@dec
+def modified_print():
+    print("A modified function")
+
+
+y = modified_print()  #  samo zapisanie zmiennej powołuje wywołanie funkcji
+z =dec(modified_print)
+print(y)
+
+
+# property decorator
+
+#   @property,@classmethod, @staticmethod 
+
+class House:
+    def __init__(self, type):
+        self.__type = type 
+    
+    @property
+    def type(self):
+        return self.__type
+    
+    @type.setter
+    def type_set(self,type):
+        self.__type=type
+    
+
+
+
+class Person2:
+    def __init__(self,age,imie):
+        self.age = age
+        self.__imie = imie
+
+    @property
+    def imie(self):
+        return self.__imie
+    
+    @imie.setter
+    def set_imie(self,imie):
+        self.__imie = imie
+    
+    @imie.deleter
+    def del_imie(self):
+        del self.__imie
+
+
+person2 = Person2(30,"Bartek")
+print(person2.imie)
+person2.del_imie   # nie można wstawić nawiasów, bo "not callable"
+person2.set_imie ="Mauritius"
+print(person2.imie)
+
+
+
+
+class Apple:
+    apple_count = 0
+    def __init__(self,price):
+        self.__price = price
+        Apple.apple_count = Apple.apple_count + 1
+
+    @property
+    def price(self):
+        return self.__price
+    
+    @price.setter
+    def price(self,price):
+        self.__price = price
+
+    @price.deleter
+    def price(self):
+        del self.__price
+
+    # Access to the class
+    @classmethod
+    def apple_counter(argumentem_jest_funkcja):  #argument chyba dowolny(przyjmie po prostu obecną klasę)
+        print("Liczba jabłek: "+str(Apple.apple_count))  # nie zapominać o Apple.xxxx
+        #return apple_count 
+
+    # Access to nothing
+    @staticmethod
+    def bzdura():
+        print("Ta metoda nie ma związku z resztą klasy??")
+
+
+Apple.apple_counter() 
+print(Apple.apple_count)  # 0
+anton = Apple(5.2)
+print(Apple.apple_count)  #1, czyli dobrze
+banton = Apple(3.6)
+Apple.apple_counter()   # o dziwo działa
+Apple.bzdura()
