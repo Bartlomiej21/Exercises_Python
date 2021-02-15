@@ -1,0 +1,24 @@
+# jak na tydzień przerwy, to ładnie zapamiętałem
+
+class Person2:
+    def __init__(self,age,imie):
+        self.age = age
+        self.imie = imie
+    
+    def getter(self):
+        return self.imie
+    
+    def setter(self,imie):
+        self.imie=imie
+    
+    def deleter(self):
+        del self.imie
+
+    name = property(getter,setter,deleter,"opis")
+
+
+person2 = Person2(30,"Bartek")
+print(person2.imie)
+person2.deleter()
+person2.setter("Mauritius")
+print(person2.imie)
