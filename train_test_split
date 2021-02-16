@@ -1,0 +1,26 @@
+# bardzo ważna funkcja, którą importujemy z sklearn
+# umożliwia podział df na część do nauki i część testową
+
+
+import pandas as pd 
+import matplotlib.pyplot as plt 
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+model = LinearRegression()
+df = pd.read_csv('C:\\Users\#######\Desktop\Python exercises\\ML\py-master\ML\\6_train_test_split\carprices.csv')
+
+plt.scatter(df['Age(yrs)'],df['Sell Price($)'])
+x = df.drop('Sell Price($)',axis='columns')
+y = df['Sell Price($)']
+model.fit(x,y)
+model.score(x,y)   # 0.9358277461816622
+# Mileage	Age(yrs)	Sell Price($)
+model.predict([[30000,7]])
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.25,random_state=10)  # random_state utrzymuje te same wartości
+
+model.fit(x_train,y_train)
+model.score(x_test,y_test)
+model.predict(x_test)   # array z przewidywanymi wartościami równy liczbie rzędów
+#print(model.predict([[30000,7]]))   #31 236
