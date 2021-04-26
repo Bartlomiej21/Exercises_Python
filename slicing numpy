@@ -43,3 +43,65 @@ np.random.randint(0,3)
 z=np.linspace(54000,72000,50)
 #print(z)
 print(np.max(z))
+
+
+
+# kolejna seria ćwiczeń
+import numpy as np
+x=[[1,2,3],[4,5,6],[7,8,9]]
+y=np.array(x)
+print(np.ones((3,3)))
+print(np.ones([3,3])+5)
+print(np.eye(4))  # macierz jedynkowa
+np.arange(10).reshape(2,5)
+y=np.arange(99).reshape(11,9)
+np.linspace(0,2,5)
+print(y.max())
+print(y.min())
+print(y.argmax())
+np.random.randint(0,3)
+z=np.linspace(54000,72000,50)
+#print(z)
+print(np.max(z))
+
+b=np.ones([2,4])+14
+print(b)
+b = b.reshape(4,2)
+print(b)
+print(np.arange(5,10))
+c=np.linspace(1,10,4)
+print(c)
+print(c.argmax())
+
+
+d= np.arange(10)
+print(d[-5:])  # łącznie z numerem 9
+print(d[-5:-1])
+d[-5:-1] = 40   
+print(d)
+e =d.copy()
+print(e)
+
+
+x = np.arange(25).reshape(5,5)
+y = np.arange(1,20)
+print(x[1][0])
+print(x[1][2:])
+print(x[0:2,2:])
+y
+print(y[y>12])  # może być użyteczne
+print(y[y%2==0])
+
+
+x= np.arange(10,22)
+x= x.reshape(4,3)
+print(np.sin(x))
+print(np.tan(x))
+print(np.log(x))
+y=np.arange(12).reshape(4,3)
+array1= [1,8,23,37]
+print(np.sum(array1))
+print(x+y) 
+
+
+
