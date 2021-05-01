@@ -17,3 +17,17 @@ D = [3,4,5,6]
 E = [7,8,9,0]
 
 df = pd.DataFrame([A,B,C,D,E],['a','b','c','d','e'],['W','X','Y','Z'])
+
+df1= pd.DataFrame([A,B,C,D,E],['a','b','c','d','e'],['A','B','C','D'])
+df1['E']= df['Y']+df['Z']
+print(df1)
+#df1 = df1.drop('E',1)
+#print(df1.drop('C',1))
+#df1 = df1.append(df)
+plus = df1.iloc[4]+df1.iloc[0]  # iloc pozwala "dostać się do wiersza"
+df2 = df1.append(plus,ignore_index=True)
+#print(df1)
+#print(df2)
+# należy pamiętać, że df2 będzie miał inny index niestety 
+
+df1.loc['d','A']
