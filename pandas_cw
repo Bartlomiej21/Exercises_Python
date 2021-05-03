@@ -31,3 +31,35 @@ df2 = df1.append(plus,ignore_index=True)
 # należy pamiętać, że df2 będzie miał inny index niestety 
 
 df1.loc['d','A']
+
+
+# preparujemy na szybko wine_df, bo nie mamy pliku źródłówego
+col = ['fixed_acidity', 'volatile_acidity', 'citric_acid', 'residual_sugar', 'chlorides', 'free_sulfur_dioxide', 'total_sulfur_dioxide','density','pH','sulphates', 'alcohol', 'quality' ]
+index_mine = ['a','b','c','d','e']
+
+x = np.arange(60).reshape(5,12)
+#print(x)
+
+wine_df = pd.DataFrame(x,index=index_mine,columns=col)
+
+
+wine_df['fixed_acidity']
+wine_df.fixed_acidity 
+
+# kilka z kolumn (pamiętać o nawiasach)
+wine_list = wine_df[['fixed_acidity', 'volatile_acidity', 'citric_acid']]
+
+# liczba i rodzaj danych w kolumnach
+wine_df.dtypes.value_counts()
+# można wybrać określony typ danych
+wine_df.select_dtypes(include=['float'])
+
+#conditional accessing
+print(df)
+df[df["W"]>8]
+df[df['W']>3][['W','X']]  # cóż za nieciekawa konstrukcja - tylko kolumny w i x będą brane pod uwagę
+
+# ćw: zrobić tak, by wydrukowało tylko d używając < i >
+
+df[(df['X']>3) & (df['Y']<6)]
+
