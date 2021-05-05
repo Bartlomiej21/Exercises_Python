@@ -63,3 +63,33 @@ df[df['W']>3][['W','X']]  # cóż za nieciekawa konstrukcja - tylko kolumny w i 
 
 df[(df['X']>3) & (df['Y']<6)]
 
+
+d = {'a':[1,2,3,4,5],'b':[6,7,8,9,np.nan],'c':[np.nan,np.nan,3,4,5]}
+df = pd.DataFrame(d)
+print(df)
+df.dropna(axis=0)  # samo to nie zmienia wartości df
+df.dropna(thresh=3)  # thresh - require n non-na values
+
+df = df.fillna(df.mean(axis=0))
+print(df)
+
+
+# this is a very simple dict because it's just for training
+p = {'item':['mouse','pc','monitor'],'days':['mon','tuesday','wed'],'price':[50,2000,400]}
+df = pd.DataFrame(p)
+x = df.groupby('item')
+x.mean()
+x.describe()  # zestaw statystyk (std,min,max,quartile,mean)
+
+y1 = {'a':[1,2,3]}
+y2 = {'b':[8,3,4]}
+y1df = pd.DataFrame(y1) 
+y2df = pd.DataFrame(y2) 
+
+y1df.join(y2df,how='left')  # left works probably like sql left join
+print(y1df)
+print(y1df.join(y2df,how='left'))
+
+
+
+
