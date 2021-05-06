@@ -90,6 +90,13 @@ y1df.join(y2df,how='left')  # left works probably like sql left join
 print(y1df)
 print(y1df.join(y2df,how='left'))
 
+x1 = {'a':[1,2,3],'b':[3,8,2]}
+y1 = {'c':[8,3,4],'d':[5,9,1]}
 
+x= pd.DataFrame(x1, index=['p1','p2','p3'])
+y = pd.DataFrame(y1, index=['p3','p4','p5'])
+print(x)
+print(y)
+x.join(y,how='right')  # inner, left, right   # joins through index
 
 
